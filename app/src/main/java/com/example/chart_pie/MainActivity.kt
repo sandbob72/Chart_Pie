@@ -1,5 +1,6 @@
 package com.example.chart_pie
 
+import android.databinding.DataBindingUtil
 import android.graphics.Color
 import android.graphics.Color.rgb
 import android.support.v7.app.AppCompatActivity
@@ -14,6 +15,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.example.chart_pie.databinding.ActivityMainBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -23,11 +25,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
 
         val data1 = 25
         val data2 = 50
         val data3 = 75
+
+        binding.text1.text = "$data1"
+        binding.text2.text = "$data2"
+        binding.text3.text = "$data3"
 
         setupPieChartViewOne(data1)
         setupPieChartViewTwo(data2)
@@ -40,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         mPie = findViewById(R.id.pie)
         mPie?.setUsePercentValues(true)
         //mPie?.setExtraOffsets(10f, 10f, 10f, 10f)
-        mPie?.setHoleRadius(70f)
+        mPie?.setHoleRadius(80f)
         mPie?.dragDecelerationFrictionCoef
         mPie?.setTransparentCircleRadius(0f)
         mPie?.animateX(1000)
@@ -130,6 +138,7 @@ class MainActivity : AppCompatActivity() {
         mPie?.data = pieData
         mPie?.legend!!.isEnabled = false
         mPie?.description!!.isEnabled = false
+        mPie?.setTouchEnabled(false)
 
     }
 
@@ -140,7 +149,7 @@ class MainActivity : AppCompatActivity() {
 
         mPie?.setUsePercentValues(true)
         //mPie?.setExtraOffsets(50f, 50f, 50f, 50f)
-        mPie?.setHoleRadius(70f)
+        mPie?.setHoleRadius(80f)
 
         mPie?.dragDecelerationFrictionCoef
         mPie?.setTransparentCircleRadius(0f)
@@ -231,6 +240,7 @@ class MainActivity : AppCompatActivity() {
         mPie?.data = pieData
         mPie?.legend!!.isEnabled = false
         mPie?.description!!.isEnabled = false
+        mPie?.setTouchEnabled(false)
 
     }
 
@@ -242,7 +252,7 @@ class MainActivity : AppCompatActivity() {
 
         mPie?.setUsePercentValues(true)
         //mPie?.setExtraOffsets(50f, 50f, 50f, 50f)
-        mPie?.setHoleRadius(70f)
+        mPie?.setHoleRadius(80f)
 
         mPie?.dragDecelerationFrictionCoef
         mPie?.setTransparentCircleRadius(0f)
@@ -333,6 +343,7 @@ class MainActivity : AppCompatActivity() {
         mPie?.data = pieData
         mPie?.legend!!.isEnabled = false
         mPie?.description!!.isEnabled = false
+        mPie?.setTouchEnabled(false)
 
     }
 
