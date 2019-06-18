@@ -29,13 +29,17 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 
-        val data1 = 25
-        val data2 = 50
-        val data3 = 75
+        val data1 = 40
+        val data2 = 10
+        val data3 = 60
 
-        binding.text1.text = "$data1"
-        binding.text2.text = "$data2"
-        binding.text3.text = "$data3"
+        val DarkGreen = rgb(0,100,0)
+        val Red = rgb(255,0,0)
+        val DarkYellow = rgb(204,204,0)
+
+        binding.text1.text = "สำเร็จ"
+        binding.text2.text = "ไม่สำเร็จ"
+        binding.text3.text = "ยังทำไม่ได้"
 
         setupPieChartViewOne(data1)
         setupPieChartViewTwo(data2)
@@ -48,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         mPie = findViewById(R.id.pie)
         mPie?.setUsePercentValues(true)
         //mPie?.setExtraOffsets(10f, 10f, 10f, 10f)
-        mPie?.setHoleRadius(80f)
+        mPie?.setHoleRadius(75f)
         mPie?.dragDecelerationFrictionCoef
         mPie?.setTransparentCircleRadius(0f)
         mPie?.animateX(1000)
@@ -61,80 +65,83 @@ class MainActivity : AppCompatActivity() {
         }
 
         val colors = ArrayList<Int>()
+        val DarkGreen = rgb(0,100,0)
 
         if (data == 0){
             for (i in 1..10)
             colors.add(Color.LTGRAY)
         }
         else if (data > 0 && data <= 10){
-            colors.add(Color.RED)
+            colors.add(DarkGreen)
             for (i in 1..9)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 10 && data <= 20){
             for (i in 1..2)
-                colors.add(Color.RED)
+                colors.add(DarkGreen)
             for (i in 1..8)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 20 && data <= 30){
             for (i in 1..3)
-                colors.add(Color.RED)
+                colors.add(DarkGreen)
             for (i in 1..7)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 30 && data <= 40){
             for (i in 1..4)
-                colors.add(Color.RED)
+                colors.add(DarkGreen)
             for (i in 1..6)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 40 && data <= 50){
             for (i in 1..5)
-                colors.add(Color.RED)
+                colors.add(DarkGreen)
             for (i in 1..5)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 50 && data <= 60){
             for (i in 1..6)
-                colors.add(Color.RED)
+                colors.add(DarkGreen)
             for (i in 1..4)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 60 && data <= 70){
             for (i in 1..7)
-                colors.add(Color.RED)
+                colors.add(DarkGreen)
             for (i in 1..3)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 70 && data <= 80){
             for (i in 1..8)
-                colors.add(Color.RED)
+                colors.add(DarkGreen)
             for (i in 1..2)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 80 && data < 100){
             for (i in 1..9)
-                colors.add(Color.RED)
+                colors.add(DarkGreen)
 
             colors.add(Color.LTGRAY)
         }
         else if (data == 100){
             for (i in 1..10)
-                colors.add(Color.RED)
+                colors.add(DarkGreen)
 
         }
 
         val dataSet = PieDataSet(entry, "")
         dataSet.setColors(colors)
         dataSet.setDrawValues(true)
-        dataSet.setSliceSpace(5f)
+        dataSet.setSliceSpace(2f)
 
         val pieData = PieData(dataSet)
         pieData.setValueFormatter(PercentFormatter())
         pieData.setValueTextSize(0f)
         pieData.setValueTextColor(Color.WHITE)
 
+        mPie?.setCenterText("$data%")
+        mPie?.setCenterTextSize(20f)
         mPie?.data = pieData
         mPie?.legend!!.isEnabled = false
         mPie?.description!!.isEnabled = false
@@ -149,7 +156,7 @@ class MainActivity : AppCompatActivity() {
 
         mPie?.setUsePercentValues(true)
         //mPie?.setExtraOffsets(50f, 50f, 50f, 50f)
-        mPie?.setHoleRadius(80f)
+        mPie?.setHoleRadius(75f)
 
         mPie?.dragDecelerationFrictionCoef
         mPie?.setTransparentCircleRadius(0f)
@@ -163,80 +170,83 @@ class MainActivity : AppCompatActivity() {
         }
 
         val colors = ArrayList<Int>()
+        val Red = rgb(255,0,0)
 
         if (data == 0){
             for (i in 1..10)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 0 && data <= 10){
-            colors.add(Color.GREEN)
+            colors.add(Red)
             for (i in 1..9)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 10 && data <= 20){
             for (i in 1..2)
-                colors.add(Color.GREEN)
+                colors.add(Red)
             for (i in 1..8)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 20 && data <= 30){
             for (i in 1..3)
-                colors.add(Color.GREEN)
+                colors.add(Red)
             for (i in 1..7)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 30 && data <= 40){
             for (i in 1..4)
-                colors.add(Color.GREEN)
+                colors.add(Red)
             for (i in 1..6)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 40 && data <= 50){
             for (i in 1..5)
-                colors.add(Color.GREEN)
+                colors.add(Red)
             for (i in 1..5)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 50 && data <= 60){
             for (i in 1..6)
-                colors.add(Color.GREEN)
+                colors.add(Red)
             for (i in 1..4)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 60 && data <= 70){
             for (i in 1..7)
-                colors.add(Color.GREEN)
+                colors.add(Red)
             for (i in 1..3)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 70 && data <= 80){
             for (i in 1..8)
-                colors.add(Color.GREEN)
+                colors.add(Red)
             for (i in 1..2)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 80 && data < 100){
             for (i in 1..9)
-                colors.add(Color.GREEN)
+                colors.add(Red)
 
             colors.add(Color.LTGRAY)
         }
         else if (data == 100){
             for (i in 1..10)
-                colors.add(Color.RED)
+                colors.add(Red)
 
         }
 
         val dataSet = PieDataSet(entry, "")
         dataSet.setColors(colors)
         dataSet.setDrawValues(true)
-        dataSet.setSliceSpace(5f)
+        dataSet.setSliceSpace(2f)
 
         val pieData = PieData(dataSet)
         pieData.setValueFormatter(PercentFormatter())
         pieData.setValueTextSize(0f)
         pieData.setValueTextColor(Color.WHITE)
 
+        mPie?.setCenterText("$data%")
+        mPie?.setCenterTextSize(20f)
         mPie?.data = pieData
         mPie?.legend!!.isEnabled = false
         mPie?.description!!.isEnabled = false
@@ -252,7 +262,7 @@ class MainActivity : AppCompatActivity() {
 
         mPie?.setUsePercentValues(true)
         //mPie?.setExtraOffsets(50f, 50f, 50f, 50f)
-        mPie?.setHoleRadius(80f)
+        mPie?.setHoleRadius(75f)
 
         mPie?.dragDecelerationFrictionCoef
         mPie?.setTransparentCircleRadius(0f)
@@ -266,80 +276,83 @@ class MainActivity : AppCompatActivity() {
         }
 
         val colors = ArrayList<Int>()
+        val DarkYellow = rgb(241, 196, 15)
 
         if (data == 0){
             for (i in 1..10)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 0 && data <= 10){
-            colors.add(Color.BLUE)
+            colors.add(DarkYellow)
             for (i in 1..9)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 10 && data <= 20){
             for (i in 1..2)
-                colors.add(Color.BLUE)
+                colors.add(DarkYellow)
             for (i in 1..8)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 20 && data <= 30){
             for (i in 1..3)
-                colors.add(Color.BLUE)
+                colors.add(DarkYellow)
             for (i in 1..7)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 30 && data <= 40){
             for (i in 1..4)
-                colors.add(Color.BLUE)
+                colors.add(DarkYellow)
             for (i in 1..6)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 40 && data <= 50){
             for (i in 1..5)
-                colors.add(Color.BLUE)
+                colors.add(DarkYellow)
             for (i in 1..5)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 50 && data <= 60){
             for (i in 1..6)
-                colors.add(Color.BLUE)
+                colors.add(DarkYellow)
             for (i in 1..4)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 60 && data <= 70){
             for (i in 1..7)
-                colors.add(Color.BLUE)
+                colors.add(DarkYellow)
             for (i in 1..3)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 70 && data <= 80){
             for (i in 1..8)
-                colors.add(Color.BLUE)
+                colors.add(DarkYellow)
             for (i in 1..2)
                 colors.add(Color.LTGRAY)
         }
         else if (data > 80 && data < 100){
             for (i in 1..9)
-                colors.add(Color.BLUE)
+                colors.add(DarkYellow)
 
             colors.add(Color.LTGRAY)
         }
         else if (data == 100){
             for (i in 1..10)
-                colors.add(Color.BLUE)
+                colors.add(DarkYellow)
 
         }
 
         val dataSet = PieDataSet(entry, "")
         dataSet.setColors(colors)
         dataSet.setDrawValues(true)
-        dataSet.setSliceSpace(5f)
+        dataSet.setSliceSpace(2f)
 
         val pieData = PieData(dataSet)
         pieData.setValueFormatter(PercentFormatter())
         pieData.setValueTextSize(0f)
         pieData.setValueTextColor(Color.WHITE)
 
+        mPie?.setCenterText("$data%")
+        mPie?.setCenterTextSize(20f)
         mPie?.data = pieData
         mPie?.legend!!.isEnabled = false
         mPie?.description!!.isEnabled = false
