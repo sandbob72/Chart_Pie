@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val data1 = 40
+        val data1 = 25
         val data2 = 10
-        val data3 = 60
+        val data3 = 75
 
         binding.text1.text = "สำเร็จ"
         binding.text2.text = "ไม่สำเร็จ"
@@ -174,23 +174,23 @@ class MainActivity : AppCompatActivity() {
     {
         val colors = ArrayList<Int>()
         if (data == 0){for (i in 1..10) colors.add(Color.LTGRAY)
-        } else if (data > 0 && data <= 10){ colors.add(color)
+        } else if (data > 0 && data < 10){ colors.add(color)
             for (i in 1..9) colors.add(Color.LTGRAY)
-        } else if (data > 10 && data <= 20){ for (i in 1..2) colors.add(color)
+        } else if (data >= 10 && data < 20){ for (i in 1..2) colors.add(color)
             for (i in 1..8) colors.add(Color.LTGRAY)
-        } else if (data > 20 && data <= 30){ for (i in 1..3) colors.add(color)
+        } else if (data >= 20 && data < 30){ for (i in 1..3) colors.add(color)
             for (i in 1..7) colors.add(Color.LTGRAY)
-        } else if (data > 30 && data <= 40){ for (i in 1..4) colors.add(color)
+        } else if (data >= 30 && data < 40){ for (i in 1..4) colors.add(color)
             for (i in 1..6) colors.add(Color.LTGRAY)
-        } else if (data > 40 && data <= 50){ for (i in 1..5) colors.add(color)
+        } else if (data >= 40 && data < 50){ for (i in 1..5) colors.add(color)
             for (i in 1..5) colors.add(Color.LTGRAY)
-        } else if (data > 50 && data <= 60){ for (i in 1..6) colors.add(color)
+        } else if (data >= 50 && data < 60){ for (i in 1..6) colors.add(color)
             for (i in 1..4) colors.add(Color.LTGRAY)
-        } else if (data > 60 && data <= 70){ for (i in 1..7) colors.add(color)
+        } else if (data >= 60 && data < 70){ for (i in 1..7) colors.add(color)
             for (i in 1..3) colors.add(Color.LTGRAY)
-        } else if (data > 70 && data <= 80){ for (i in 1..8) colors.add(color)
+        } else if (data >= 70 && data < 80){ for (i in 1..8) colors.add(color)
             for (i in 1..2) colors.add(Color.LTGRAY)
-        } else if (data > 80 && data < 100){ for (i in 1..9) colors.add(color)
+        } else if (data >= 80 && data < 100){ for (i in 1..9) colors.add(color)
             colors.add(Color.LTGRAY)
         } else if (data == 100){ for (i in 1..10) colors.add(color) }
         return colors
