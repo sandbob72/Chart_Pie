@@ -21,7 +21,9 @@ import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
-    var mPie: PieChart? = null
+    var mPie1: PieChart? = null
+    var mPie2: PieChart? = null
+    var mPie3: PieChart? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,102 +37,24 @@ class MainActivity : AppCompatActivity() {
         binding.text2.text = "ไม่สำเร็จ"
         binding.text3.text = "ยังทำไม่ได้"
 
-        setupPieChartViewOne(data1)
-        setupPieChartViewTwo(data2)
-        setupPieChartViewThree(data3)
+        mPie1 = findViewById(R.id.pie)
+        mPie2 = findViewById(R.id.pie2)
+        mPie3 = findViewById(R.id.pie3)
 
-    }
-    //------------------------------------------------------------------------------------------------//
-    //------------------------------------------------------------------------------------------------//
-    fun setupPieChartViewOne(data : Int) {
-        mPie = findViewById(R.id.pie)
-        mPie?.setUsePercentValues(true)
-        mPie?.setHoleRadius(75f)
-        mPie?.dragDecelerationFrictionCoef
-        mPie?.setTransparentCircleRadius(0f)
-        mPie?.animateX(1000)
-
-
-        val value = Arrays.asList(10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f)
-        val entry = ArrayList<PieEntry>()
-        for(i in value.indices) {
-            entry.add( PieEntry(value.get(i)))
-        }
-
-        val colors = ArrayList<Int>()
         val DarkGreen = rgb(0,100,0)
-        colors.addAll(valueData(data,DarkGreen))
-
-        val dataSet = PieDataSet(entry, "")
-        dataSet.setColors(colors)
-        dataSet.setDrawValues(true)
-        dataSet.setSliceSpace(2f)
-
-        val pieData = PieData(dataSet)
-        pieData.setValueFormatter(PercentFormatter())
-        pieData.setValueTextSize(0f)
-        pieData.setValueTextColor(Color.WHITE)
-
-        mPie?.setCenterText("$data%")
-        mPie?.setCenterTextSize(20f)
-        mPie?.data = pieData
-        mPie?.legend!!.isEnabled = false
-        mPie?.description!!.isEnabled = false
-        mPie?.setTouchEnabled(false)
-
-    }
-
-    //------------------------------------------------------------------------------------------------//
-    //------------------------------------------------------------------------------------------------//
-    fun setupPieChartViewTwo(data: Int) {
-        mPie = findViewById(R.id.pie2)
-
-        mPie?.setUsePercentValues(true)
-        mPie?.setHoleRadius(75f)
-
-        mPie?.dragDecelerationFrictionCoef
-        mPie?.setTransparentCircleRadius(0f)
-        mPie?.animateX(1000)
-
-
-        val value = Arrays.asList(10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f)
-        val entry = ArrayList<PieEntry>()
-        for(i in value.indices) {
-            entry.add( PieEntry(value.get(i)))
-        }
-
-        val colors = ArrayList<Int>()
         val Red = rgb(255,0,0)
-        colors.addAll(valueData(data,Red))
+        val DarkYellow = rgb(204,204,0)
 
-        val dataSet = PieDataSet(entry, "")
-        dataSet.setColors(colors)
-        dataSet.setDrawValues(true)
-        dataSet.setSliceSpace(2f)
-
-        val pieData = PieData(dataSet)
-        pieData.setValueFormatter(PercentFormatter())
-        pieData.setValueTextSize(0f)
-        pieData.setValueTextColor(Color.WHITE)
-
-        mPie?.setCenterText("$data%")
-        mPie?.setCenterTextSize(20f)
-        mPie?.data = pieData
-        mPie?.legend!!.isEnabled = false
-        mPie?.description!!.isEnabled = false
-        mPie?.setTouchEnabled(false)
+        setupPieChartViewOne(data1,mPie1,DarkGreen)
+        setupPieChartViewOne(data2,mPie2,Red)
+        setupPieChartViewOne(data3,mPie3,DarkYellow)
 
     }
-
-
     //------------------------------------------------------------------------------------------------//
     //------------------------------------------------------------------------------------------------//
-    fun setupPieChartViewThree(data: Int) {
-        mPie = findViewById(R.id.pie3)
-
+    fun setupPieChartViewOne(data : Int, mPie: PieChart?,color: Int ) {
         mPie?.setUsePercentValues(true)
         mPie?.setHoleRadius(75f)
-
         mPie?.dragDecelerationFrictionCoef
         mPie?.setTransparentCircleRadius(0f)
         mPie?.animateX(1000)
@@ -143,9 +67,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val colors = ArrayList<Int>()
-        val DarkYellow = rgb(241, 196, 15)
-
-        colors.addAll(valueData(data,DarkYellow))
+        colors.addAll(valueData(data,color))
 
         val dataSet = PieDataSet(entry, "")
         dataSet.setColors(colors)
@@ -165,34 +87,19 @@ class MainActivity : AppCompatActivity() {
         mPie?.setTouchEnabled(false)
 
     }
-    //--------------------------------------------------------------------------------------------------//
-    //--------------------------------------------------------------------------------------------------//
+
+    //------------------------------------------------------------------------------------------------//
+    //------------------------------------------------------------------------------------------------//
 
     //data set color
 
     fun valueData(data:Int,color: Int):ArrayList<Int>
     {
         val colors = ArrayList<Int>()
-        if (data >= 0 && data < 10){ for (i in 1..10) colors.add(Color.LTGRAY)
-        } else if (data >= 10 && data < 20){ colors.add(color)
-            for (i in 1..9) colors.add(Color.LTGRAY)
-        } else if (data >= 20 && data < 30){ for (i in 1..2) colors.add(color)
-            for (i in 1..8) colors.add(Color.LTGRAY)
-        } else if (data >= 30 && data < 40){ for (i in 1..3) colors.add(color)
-            for (i in 1..7) colors.add(Color.LTGRAY)
-        } else if (data >= 40 && data < 50){ for (i in 1..4) colors.add(color)
-            for (i in 1..6) colors.add(Color.LTGRAY)
-        } else if (data >= 50 && data < 60){ for (i in 1..5) colors.add(color)
-            for (i in 1..5) colors.add(Color.LTGRAY)
-        } else if (data >= 60 && data < 70){ for (i in 1..6) colors.add(color)
-            for (i in 1..4) colors.add(Color.LTGRAY)
-        } else if (data >= 70 && data < 80){ for (i in 1..7) colors.add(color)
-            for (i in 1..3) colors.add(Color.LTGRAY)
-        } else if (data >= 80 && data < 90){ for (i in 1..8) colors.add(color)
-            for (i in 1..2) colors.add(Color.LTGRAY)
-        } else if (data >= 90 && data < 100) { for (i in 1..9) colors.add(color)
-            colors.add(Color.LTGRAY)
-        }else if (data == 100){ for (i in 1..10) colors.add(color) }
+        var colorSelect = data/10
+        var colorWhite = 10 - colorSelect
+        for (i in 1..colorSelect) colors.add(color)
+        for (i in 1..colorWhite) colors.add(Color.GRAY)
         return colors
     }
     //--------------------------------------------------------------------------------------------------//
